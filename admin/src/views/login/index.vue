@@ -1,6 +1,9 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
+      <div class="title-container">
+        <h3 class="title">{{$t('login.title')}}</h3>
+      </div>
       <el-form-item prop="username" >
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
