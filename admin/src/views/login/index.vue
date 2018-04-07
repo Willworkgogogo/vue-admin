@@ -2,7 +2,8 @@
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
       <div class="title-container">
-        <h3 class="title">{{$t('login.title')}}</h3>
+        <h3 class="title">{{ $t('login.title') }}</h3>
+        <lang-select class="set-language"></lang-select>
       </div>
       <el-form-item prop="username" >
         <span class="svg-container svg-container_login">
@@ -10,16 +11,26 @@
         </span>
         <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名" />
       </el-form-item>
-
+      <el-form-item prop="password">
+        <span class="svg-container svg-container_login">
+          <svg-icon icon-class="password" />
+        </span>
+        <el-input name="password" :type="passwordType" v-model="loginForm.password" autoComplete="on" placeholder="password" @keyup.enter.native="handleLogin" />
+        <span class="show-pwd" @click="showPwd">
+          <svg-icon icon-class="eye" />
+        </span>
+      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { isvalidUsername } from 'utils/validate'
+import LangSelect from 'components/LangSelect'
 
 export default {
   name: 'login',
+  components: { LangSelect },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!value) return callback(new Error("user name can't empty"))
@@ -52,6 +63,28 @@ export default {
       passwordType: 'password',
       loading: false,
       showDialog: false
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.$store
+            .dispatch('LoginByUsername', this.loginForm)
+            .then(() => {
+              this.$router.push({ path: '/' })
+            })
+            .catch(() => {
+              this.loading = false
+            })
+        } else {
+          console.log('error submit')
+          return false
+        }
+      })
+    },
+    showPwd() {
+      this.passwordType = this.passwordType ? '' : 'password'
     }
   }
 }

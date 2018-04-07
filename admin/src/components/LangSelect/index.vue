@@ -5,7 +5,7 @@
     </div>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item command="zh" :disabled="language==='zh'">中文</el-dropdown-item>
-      <el-dropdown-item command="en" :disabled="language==='zh'">English</el-dropdown-item>
+      <el-dropdown-item command="en" :disabled="language==='en'">English</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
 </template>
@@ -31,8 +31,9 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  .international-icon
-    font-size 20px
-    cursor pointer
-    vertical-align -5px!important
+.international-icon {
+  font-size: 20px;
+  cursor: pointer;
+  vertical-align: -5px !important;
+}
 </style>
