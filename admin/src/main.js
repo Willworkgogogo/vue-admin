@@ -12,6 +12,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import './icons' // icon
 import i18n from './lang'
+import './mock'
 
 Vue.use(ElementUI, {
   size: 'medium',
