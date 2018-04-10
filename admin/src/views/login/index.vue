@@ -20,6 +20,7 @@
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
+      <el-button type="primary" :loading="loading" @click.native.prevent="handleLogin" style="width: 100%; margin-top: 30px;">{{$t('login.logIn')}}</el-button>
     </el-form>
   </div>
 </template>
@@ -69,9 +70,11 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          this.loading = true
           this.$store
             .dispatch('LoginByUsername', this.loginForm)
             .then(() => {
+              this.loading = false
               this.$router.push({ path: '/' })
             })
             .catch(() => {
