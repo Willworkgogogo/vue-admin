@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from 'views/login'
-import Test from 'views/test'
+const _import = require('./_import_' + process.env.NODE_ENV)
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', component: Test },
-    { path: '/login', name: 'login', component: Login }
+    { path: '/', component: _import('test/index') },
+    { path: '/login', name: 'login', component: _import('login/index') }
   ]
 })

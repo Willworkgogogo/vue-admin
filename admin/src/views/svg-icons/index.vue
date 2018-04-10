@@ -60,7 +60,7 @@ export default {
     .icon-item
       margin 20px
       height 110px
-      text-align center 
+      text-align center
       width 110px
       float left
       font-size 30px
@@ -71,5 +71,5 @@ export default {
       font-size 24px
       margin-top 10px
     .disabled
-      pointer-events none 
+      pointer-events none
 </style>
