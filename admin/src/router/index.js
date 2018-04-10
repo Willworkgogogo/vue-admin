@@ -7,7 +7,8 @@ Vue.use(Router)
 export const constantRouterMap = [
   { path: '/login', name: 'login', component: _import('login/index') },
   { path: '/', component: _import('test/index') },
-  { path: '/404', component: _import('errorPages/404'), hidden: true }
+  { path: '/404', component: _import('errorPages/404') },
+  { path: '/401', component: _import('errorPages/401') }
 ]
 
 export default new Router({
