@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     message() {
-      return '鞋已踏破，页面还是找不到...'
+      return '踏破铁鞋，页面还是找不到...'
     }
   }
 }
