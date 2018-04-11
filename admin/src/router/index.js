@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Layout from 'views/layout/Layout'
 const _import = require('./_import_' + process.env.NODE_ENV)
 
 Vue.use(Router)
@@ -15,3 +16,28 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
+
+export const asyncRouterMap = [
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/index',
+    meta: { roles: ['admin'] },
+    children: [
+      {
+        path: 'index',
+        components: _import('permission/index'),
+        name: 'permission',
+        meta: {
+          title: 'permission',
+          icon: 'lock',
+          roles: ['admin']
+        }
+      }
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/404'
+  }
+]
