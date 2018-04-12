@@ -40,6 +40,7 @@ export default {
   methods: {
     back() {
       if (this.$route.query.noGoBack) {
+        this.$router.go(-1)
       }
     }
   }

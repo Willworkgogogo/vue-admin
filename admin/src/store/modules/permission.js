@@ -2,8 +2,8 @@ import { constantRouterMap, asyncRouterMap } from '@/router'
 
 /**
  * 通过meta.role判断是否与当前用户权限匹配
- * @param {Array} roles
- * @param route
+ * @param {Array} roles, 用户身份权限组成的数组
+ * @param route，当前页面的路由信息
  */
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
@@ -16,7 +16,7 @@ function hasPermission(roles, route) {
 /**
  * 递归方式处理过滤异步路由表，返回符合用户角色权限的路由表
  * @param asyncRouterMap
- * @param roles
+ * @param roles ， 定义的权限
  */
 function filterAsyncRouter(asyncRouterMap, roles) {
   const accessedRouters = asyncRouterMap.filter(route => {
@@ -56,7 +56,7 @@ const permission = {
           // admin 用户不需要过滤路由
           accessedRouters = asyncRouterMap
         } else {
-          accessedRouters = filterAsyncRouter(asyncRouterMap)
+          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
         }
         commit('SET_ROUTERS', accessedRouters)
         resolve()
