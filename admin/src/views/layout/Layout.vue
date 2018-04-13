@@ -1,13 +1,17 @@
 <template>
   <div class="app-wrapper" :class="{hideSidebar: !sidebar.opened}">
-    <sidebar class="app-wrapper"></sidebar>
+    <sidebar class="sidebar-container"></sidebar>
+    <div class="main-container">
+      <navbar></navbar>
+      <app-main></app-main>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import { Sidebar } from './components'
+import { Sidebar, AppMain, Navbar } from './components'
 export default {
-  components: { Sidebar },
+  components: { Sidebar, AppMain, Navbar },
   computed: {
     sidebar() {
       console.log('sidebar: ', this.$store.state.app.sidebar)
