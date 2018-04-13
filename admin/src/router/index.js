@@ -7,9 +7,19 @@ Vue.use(Router)
 
 export const constantRouterMap = [
   { path: '/login', name: 'login', component: _import('login/index') },
-  { path: '/', component: _import('test/index') },
   { path: '/404', component: _import('errorPages/404') },
-  { path: '/401', component: _import('errorPages/401') }
+  { path: '/401', component: _import('errorPages/401') },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [{
+      path: 'dashboard',
+      component: _import('dashboard/index'),
+      name: 'dashboard',
+      meta: {title: 'dashboard', icon: 'dashboard', noCache: true}
+    }]
+  }
 ]
 
 export default new Router({
@@ -26,7 +36,7 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'index',
-        components: _import('permission/index'),
+        component: _import('permission/index'),
         name: 'permission',
         meta: {
           title: 'permission',
