@@ -22,6 +22,9 @@ const userMap = {
 export default {
   loginByUsername: config => {
     const { username } = JSON.parse(config.body)
+    // 这里的登录判断很简单
+    // 1. 只进行用户名匹配
+    // 2. 如果用户名不存在，在这里也不存在用户不存在的问题，毕竟限制了两个角色，所以这里的处理可以这么简单
     return userMap[username]
   },
   getUserInfo: config => {

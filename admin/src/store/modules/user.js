@@ -86,6 +86,27 @@ const user = {
         removeToken()
         resolve()
       })
+    },
+
+    // 改变用户权限
+    ChangeRoles({ commit }, role) {
+      return new Promise((resolve, reject) => {
+        commit('SET_TOKEN', role)
+        setToken(role)
+        getUserInfo(role)
+          .then(res => {
+            const data = res.data
+            commit('SET_ROLES', data.roles)
+            commit('SET_NAME', data.name)
+            commit('SET_AVATAR', data.avatar)
+            commit('SET_INTRODUCTION', data.introduction)
+            resolve()
+          })
+          .catch(err => {
+            console.error(err)
+            reject(err)
+          })
+      })
     }
   }
 }
