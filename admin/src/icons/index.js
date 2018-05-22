@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import SvgIcon from 'components/SvgIcon'
-import generateIconsView from 'views/svg-icons/generateIconsViews.js'
+// import generateIconsView from 'views/svg-icons/generateIconsViews.js'
 
 Vue.component('svg-icon', SvgIcon)
 
@@ -21,6 +21,7 @@ const requireAll = requireContext => requireContext.keys().map(requireContext)
  * 3. id 模块id
  * */
 const req = require.context('./svg', false, /\.svg$/)
-const iconMap = requireAll(req)
+requireAll(req) // ?解释一下
+// const iconMap = requireAll(req)
 
-generateIconsView.generate(iconMap)
+// generateIconsView.generate(iconMap)
