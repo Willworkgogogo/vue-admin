@@ -6,9 +6,9 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 Vue.use(Router)
 
 export const constantRouterMap = [
-  { path: '/login', name: 'login', component: _import('login/index') },
-  { path: '/404', component: _import('errorPages/404') },
-  { path: '/401', component: _import('errorPages/401') },
+  { path: '/login', name: 'login', component: _import('login/index'), hidden: true },
+  { path: '/404', component: _import('errorPages/404'), hidden: true },
+  { path: '/401', component: _import('errorPages/401'), hidden: true },
   {
     path: '',
     component: Layout,

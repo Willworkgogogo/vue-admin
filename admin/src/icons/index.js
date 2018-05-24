@@ -22,7 +22,6 @@ const requireAll = requireContext => requireContext.keys().map(requireContext)
  * */
 const req = require.context('./svg', false, /\.svg$/)
 requireAll(req) // 目的：自动引入icons文件夹下所有的svg图标文件
-console.log(requireAll(req).keys().map())
 // const iconMap = requireAll(req)
 
 // generateIconsView.generate(iconMap)
