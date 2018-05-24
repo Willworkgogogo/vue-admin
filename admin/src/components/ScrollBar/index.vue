@@ -17,6 +17,7 @@ export default {
   },
   methods: {
     handleScroll(e) {
+      console.log(e)
       const eventDelta = e.wheelDelta || -e.deltaY * 3
       const $container = this.$refs.scrollContainer
       const $containerHeight = $container.offsetHeight
