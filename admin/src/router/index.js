@@ -55,7 +55,6 @@ export const asyncRouterMap = [
   },
   {
     path: '/example',
-    name: 'example',
     component: Layout,
     redirect: '/example/table/drag-table',
     meta: {
@@ -68,9 +67,23 @@ export const asyncRouterMap = [
         redirect: '/example/table/drag-table',
         component: _import('example/table/index'),
         name: 'Table',
-        meta: {title: 'Table', icon: 'table'},
+        meta: {title: 'Table', icon: 'table', roles: ['admin']},
         children: [
-          { path: 'drag-table', component: _import('example/table/dragTable'), name: 'dragTable', meta: {title: 'dragTable'} }
+          { path: 'drag-table', component: _import('example/table/dragTable'), name: 'dragTable', meta: {title: 'dragTable'} },
+          { path: 'test', component: _import('example/table/test'), name: 'test', meta: {title: 'test'} }
+        ]
+      },
+      {
+        path: '/example/tab',
+        redirect: '/example/tab/tab-pane',
+        component: _import('example/tab/index'),
+        name: 'Tab',
+        meta: {
+          title: 'Tab',
+          icon: 'tab'
+        },
+        children: [
+          { path: 'tab-pane', component: _import('example/tab/components/tabPane'), name: 'tabPane', meta: {title: 'tabPane'} }
         ]
       }
     ]
