@@ -14,7 +14,6 @@ export default {
   components: { Sidebar, AppMain, Navbar },
   computed: {
     sidebar() {
-      console.log('sidebar: ', this.$store.state.app.sidebar)
       return this.$store.state.app.sidebar
     }
   }

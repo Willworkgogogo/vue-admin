@@ -1,3 +1,8 @@
+/**
+ * 将已访问路由存储成标签
+ * 实现方式：建立两个数组
+ */
+
 const tagsView = {
   state: {
     visitedViews: [],
@@ -45,7 +50,7 @@ const tagsView = {
         }
       }
     },
-    DEL_ALL_VIEWS: (state) => {
+    DEL_ALL_VIEWS: state => {
       state.visitedViews = []
       state.cachedViews = []
     }
@@ -55,19 +60,19 @@ const tagsView = {
       commit('ADD_VISITED_VIEWS', view)
     },
     delVisitedViews({ commit, state }, view) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('DEL_VISITED_VIEWS', view)
         resolve([...state.visitedViews])
       })
     },
     delOthersViews({ commit, state }, view) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('DEL_OTHERS_VIEWS', view)
         resolve([...state.visitedViews])
       })
     },
     delAllViews({ commit, state }) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('DEL_ALL_VIEWS')
         resolve([...state.visitedViews])
       })

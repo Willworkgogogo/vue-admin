@@ -8,7 +8,7 @@ import { constantRouterMap, asyncRouterMap } from '@/router'
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     // 该角色已有权限里有满足的就返回true
-    return roles.some(role => route.meta.roles.indexOf(role) > 0)
+    return roles.some(role => route.meta.roles.indexOf(role) > -1)
   }
   return false
 }
@@ -39,7 +39,7 @@ function filterAsyncRouter(asyncRouterMap, roles) {
 const permission = {
   state: {
     routers: constantRouterMap,
-    addRouters: []
+    s: []
   },
   mutations: {
     SET_ROUTERS: (state, routers) => {
